@@ -23,7 +23,7 @@ router.post(
 
 // Update a User
 router.put(
-	"/:userId",
+	"/update",
 	Authenticate,
 	UserValidator.updateUserRules(),
 	validate,

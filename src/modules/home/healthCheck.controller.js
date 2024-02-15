@@ -13,7 +13,7 @@ export const healthCheck = async (req, res, next) => {
 
 		res.status(200).json(serverHealth);
 	} catch (error) {
-		console.log("ERROR-HEALTH: ", error);
+		// console.log("ERROR-HEALTH: ", error);
 		res.status(500).json({ message: "Error Occurred on server" });
 	}
 };

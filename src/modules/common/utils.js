@@ -74,11 +74,11 @@ export function errorHandler(error, req, res, _next) {
 		let code = error.code || 400;
 		let msg = error.message || "Exception 400! Operation failed.";
 
-		console.log(error.name || "Error", error.message, error.stack);
+		// console.log(error.name || "Error", error.message, error.stack);
 
 		return res.status(code || 500).json({ status: false, message: msg });
 	} catch (e) {
-		console.log(e);
+		// console.log(e);
 		return res.status(500).json({ status: false });
 	}
 }

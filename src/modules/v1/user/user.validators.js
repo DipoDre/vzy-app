@@ -29,7 +29,6 @@ const loginUserRules = () => [
 ];
 
 const updateUserRules = () => [
-	param("userId").isMongoId().withMessage("Invalid Id"),
 	body("firstName")
 		.isString()
 		.optional()

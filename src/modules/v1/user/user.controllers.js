@@ -91,7 +91,8 @@ const loginUser = async (req, res, next) => {
 // Update User
 const updateUser = async (req, res, next) => {
 	try {
-		const { userId } = req.params;
+		const authenticatedUser = req.user;
+		const userId = authenticatedUser.id;
 		const { firstName, lastName, password } = req.body;
 
 		if (!firstName && !lastName && !password) {
