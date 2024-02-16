@@ -88,6 +88,32 @@ const loginUser = async (req, res, next) => {
 	}
 };
 
+// Get a User
+const getUser = async (req, res, next) => {
+	try {
+		const authenticatedUser = req.user;
+		const userId = authenticatedUser.id;
+
+		const user = await UserService.findUserByID(userId).catch(e => {
+			throw e;
+		});
+
+		if (!user) {
+			throw createError("User not found", 400);
+		}
+
+		const { firstName, id, email, customerId, status } = user;
+
+		const userDetails = { firstName, id, email, customerId, status };
+
+		return res
+			.status(200)
+			.json(success("User was retrieved successfully", userDetails));
+	} catch (e) {
+		return next(e);
+	}
+};
+
 // Update User
 const updateUser = async (req, res, next) => {
 	try {
@@ -140,6 +166,7 @@ const updateUser = async (req, res, next) => {
 };
 
 export default {
+	getUser,
 	createUser,
 	loginUser,
 	updateUser

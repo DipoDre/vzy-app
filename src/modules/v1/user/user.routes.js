@@ -21,6 +21,9 @@ router.post(
 	UserController.loginUser
 );
 
+// Get a User
+router.get("/", Authenticate, UserController.getUser);
+
 // Update a User
 router.put(
 	"/update",
